@@ -24,7 +24,7 @@ const AuthForm = ({title}) => {
                     Continue with Google
                 </div>
             </button>
-            <p className="mt-4 text-sm text-center text-teal-600 cursor-pointer">{title === "register" ? "Already" : "Don't"} have an account? <Link to="/login" className="text-teal-700 underline">Login</Link></p>
+            <p className="mt-4 text-sm text-center text-teal-600 cursor-pointer">{title === "register" ? "Already" : "Don't"} have an account? <Link to={title === "register" ? "/login" : "/register"} className="text-teal-700 underline">{title === "register" ? "Login" : "Register"}</Link></p>
             {
                 title === "login" &&
                 <Link to="/forget-password" className="block mt-2 text-xs text-center text-gray-400 cursor-pointer">Forgot your password?</Link>
