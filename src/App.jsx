@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
 import AuthPage from "./pages/AuthPage";
 import ForgetPassword from "./pages/ForgetPassword";
+import DashboardPage from "./pages/DashboardPage";
 
 const App = () => {
   const myRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Home></Home>,
+      element: <DashboardPage></DashboardPage>,
     },
     {
       path: "/login",
