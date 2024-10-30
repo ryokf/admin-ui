@@ -1,5 +1,11 @@
+import { AiOutlineAppstore } from "react-icons/ai";
 import { CiMenuKebab } from "react-icons/ci";
-import { FaTachometerAlt, FaWallet, FaReceipt, FaFileInvoiceDollar, FaSignOutAlt, FaBell } from "react-icons/fa";
+import { FaSignOutAlt, FaBell } from "react-icons/fa";
+import { GoGear } from "react-icons/go";
+import { GrTransaction } from "react-icons/gr";
+import { MdOutlineAccountBalanceWallet, MdOutlineAddchart } from "react-icons/md";
+import { TbReceipt2 } from "react-icons/tb";
+import { TfiTarget } from "react-icons/tfi";
 
 const MainLayout = () => {
     return (
@@ -10,26 +16,44 @@ const MainLayout = () => {
                     <div className="flex justify-center items-center w-full text-center text-2xl mb-10">FINEbank.IO</div>
                     <div className="bg-primary text-white px-4 py-3 rounded-md w-full">
                         <div className="flex items-center">
-                            <FaTachometerAlt style={{ color: "white" }} />
+                            <AiOutlineAppstore style={{ color: "white" }} />
                             <span className="ml-3 hidden lg:block">Overview</span>
                         </div>
                     </div>
                     <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
                         <div className="flex items-center">
-                            <FaWallet style={{ color: "#FFFFFF" }} />
+                            <MdOutlineAccountBalanceWallet style={{ color: "#FFFFFF" }} />
                             <span className="ml-3 hidden lg:block">Balances</span>
                         </div>
                     </div>
                     <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
                         <div className="flex items-center">
-                            <FaReceipt style={{ color: "#FFFFFF" }} />
+                            <GrTransaction style={{ color: "#FFFFFF" }} />
                             <span className="ml-3 hidden lg:block">Transactions</span>
                         </div>
                     </div>
                     <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
                         <div className="flex items-center">
-                            <FaFileInvoiceDollar style={{ color: "#FFFFFF" }} />
+                            <TbReceipt2 style={{ color: "#FFFFFF" }} />
                             <span className="ml-3 hidden lg:block">Bills</span>
+                        </div>
+                    </div>
+                    <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
+                        <div className="flex items-center">
+                            <MdOutlineAddchart style={{ color: "#FFFFFF" }} />
+                            <span className="ml-3 hidden lg:block">Expenses</span>
+                        </div>
+                    </div>
+                    <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
+                        <div className="flex items-center">
+                            <TfiTarget style={{ color: "#FFFFFF" }} />
+                            <span className="ml-3 hidden lg:block">Goals</span>
+                        </div>
+                    </div>
+                    <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
+                        <div className="flex items-center">
+                            <GoGear style={{ color: "#FFFFFF" }} />
+                            <span className="ml-3 hidden lg:block">Setting</span>
                         </div>
                     </div>
                 </div>
