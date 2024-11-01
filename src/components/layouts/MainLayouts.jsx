@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AiOutlineAppstore } from "react-icons/ai";
 import { CiMenuKebab } from "react-icons/ci";
 import { FaSignOutAlt, FaBell } from "react-icons/fa";
@@ -8,54 +9,36 @@ import { TbReceipt2 } from "react-icons/tb";
 import { TfiTarget } from "react-icons/tfi";
 
 const MainLayout = () => {
+
+    const [selectedMenu, setSelectedMenu] = useState(0);
+
+    const menuItems = [
+        { icon: AiOutlineAppstore, name: "Overview" },
+        { icon: MdOutlineAccountBalanceWallet, name: "Balances" },
+        { icon: GrTransaction, name: "Transactions" },
+        { icon: TbReceipt2, name: "Bills" },
+        { icon: MdOutlineAddchart, name: "Expenses" },
+        { icon: TfiTarget, name: "Goals" },
+        { icon: GoGear, name: "Setting" },
+    ];
     return (
         <div className="flex bg-special-mainBg w-full min-h-screen max-w-full">
             {/* Navbar start */}
             <nav className="bg-defaultBlack text-special-bg2 w-20 h-screen px-4 py-6 flex flex-col justify-between lg:w-80">
                 <div className="flex-col items-start w-full">
                     <div className="flex justify-center items-center w-full text-center text-2xl mb-10">FINEbank.IO</div>
-                    <div className="bg-primary text-white px-4 py-3 rounded-md w-full">
-                        <div className="flex items-center">
-                            <AiOutlineAppstore style={{ color: "white" }} />
-                            <span className="ml-3 hidden lg:block">Overview</span>
-                        </div>
-                    </div>
-                    <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
-                        <div className="flex items-center">
-                            <MdOutlineAccountBalanceWallet style={{ color: "#FFFFFF" }} />
-                            <span className="ml-3 hidden lg:block">Balances</span>
-                        </div>
-                    </div>
-                    <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
-                        <div className="flex items-center">
-                            <GrTransaction style={{ color: "#FFFFFF" }} />
-                            <span className="ml-3 hidden lg:block">Transactions</span>
-                        </div>
-                    </div>
-                    <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
-                        <div className="flex items-center">
-                            <TbReceipt2 style={{ color: "#FFFFFF" }} />
-                            <span className="ml-3 hidden lg:block">Bills</span>
-                        </div>
-                    </div>
-                    <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
-                        <div className="flex items-center">
-                            <MdOutlineAddchart style={{ color: "#FFFFFF" }} />
-                            <span className="ml-3 hidden lg:block">Expenses</span>
-                        </div>
-                    </div>
-                    <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
-                        <div className="flex items-center">
-                            <TfiTarget style={{ color: "#FFFFFF" }} />
-                            <span className="ml-3 hidden lg:block">Goals</span>
-                        </div>
-                    </div>
-                    <div className="hover:bg-special-bg3 px-4 py-3 rounded-md w-full">
-                        <div className="flex items-center">
-                            <GoGear style={{ color: "#FFFFFF" }} />
-                            <span className="ml-3 hidden lg:block">Setting</span>
-                        </div>
-                    </div>
+                    {
+                        menuItems.map((menuItem, index) => {
+                            return (
+                                <button onClick={() => setSelectedMenu(index)} key={index} className={`hover:bg-special-bg3 px-4 py-3 rounded-md w-full ${selectedMenu === index ? "bg-primary hover:bg-primary" : ""}`}>
+                                    <div className="flex items-center">
+                                        <menuItem.icon style={{ color: "#FFFFFF" }} />
+                                        <span className="ml-3 hidden lg:block">{menuItem.name}</span>
+                                    </div>
+                                </button>
+                            );
+                        })
+                    }
                 </div>
                 <div>
                     <div className="bg-special-bg3 px-4 py-3 rounded-md w-full cursor-pointer">
