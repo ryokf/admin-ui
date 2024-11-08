@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { AiOutlineAppstore } from "react-icons/ai";
 import { CiMenuKebab } from "react-icons/ci";
@@ -7,19 +8,20 @@ import { GrTransaction } from "react-icons/gr";
 import { MdOutlineAccountBalanceWallet, MdOutlineAddchart } from "react-icons/md";
 import { TbReceipt2 } from "react-icons/tb";
 import { TfiTarget } from "react-icons/tfi";
+import { Link } from "react-router-dom";
 
-const MainLayout = () => {
+const MainLayout = ({children}) => {
 
     const [selectedMenu, setSelectedMenu] = useState(0);
 
     const menuItems = [
-        { icon: AiOutlineAppstore, name: "Overview" },
-        { icon: MdOutlineAccountBalanceWallet, name: "Balances" },
-        { icon: GrTransaction, name: "Transactions" },
-        { icon: TbReceipt2, name: "Bills" },
-        { icon: MdOutlineAddchart, name: "Expenses" },
-        { icon: TfiTarget, name: "Goals" },
-        { icon: GoGear, name: "Setting" },
+        { icon: AiOutlineAppstore, name: "Overview", link: "/" },
+        { icon: MdOutlineAccountBalanceWallet, name: "Balances", link: "/balances" },
+        { icon: GrTransaction, name: "Transactions", link: "/transactions" },
+        { icon: TbReceipt2, name: "Bills", link: "/bills" },
+        { icon: MdOutlineAddchart, name: "Expenses", link: "/expenses" },
+        { icon: TfiTarget, name: "Goals", link: "/goals" },
+        { icon: GoGear, name: "Setting", link: "/setting" },
     ];
     return (
         <div className="flex bg-special-mainBg w-full min-h-screen max-w-full">
@@ -30,12 +32,12 @@ const MainLayout = () => {
                     {
                         menuItems.map((menuItem, index) => {
                             return (
-                                <button onClick={() => setSelectedMenu(index)} key={index} className={`hover:bg-special-bg3 px-4 py-3 rounded-md w-full ${selectedMenu === index ? "bg-primary hover:bg-primary" : ""}`}>
+                                <Link to={menuItem.link} key={index} className={`block px-4 py-3 rounded-md w-full ${window.location.pathname === menuItem.link ? "bg-primary !hover:bg-primary" : ""}`}>
                                     <div className="flex items-center">
                                         <menuItem.icon style={{ color: "#FFFFFF" }} />
                                         <span className="ml-3 hidden lg:block">{menuItem.name}</span>
                                     </div>
-                                </button>
+                                </Link>
                             );
                         })
                     }
@@ -78,33 +80,7 @@ const MainLayout = () => {
                 </header>
                 {/* Header end */}
                 {/* Content start */}
-                <main className="px-4 py-4 lg:px-6 lg:py-6 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    <div>
-                        <div className="text-lg text-gray-02 mb-2">Title1</div>
-                        <div className="bg-white rounded-lg px-6 py-5 shadow-lg">widget 1</div>
-                    </div>
-                    <div>
-                        <div className="text-lg text-gray-02 mb-2">Title2</div>
-                        <div className="bg-white rounded-lg px-6 py-5 shadow-lg">widget 2</div>
-                    </div>
-                    <div>
-                        <div className="text-lg text-gray-02 mb-2">Title3</div>
-                        <div className="bg-white rounded-lg px-6 py-5 shadow-lg">widget 3</div>
-                    </div>
-                    <div>
-                        <div className="text-lg text-gray-02 mb-2">Title4</div>
-                        <div className="bg-white rounded-lg px-6 py-5 shadow-lg">widget 4</div>
-                    </div>
-                    <div className="lg:col-span-2">
-                        <div className="text-lg text-gray-02 mb-2">Title5</div>
-                        <div className="bg-white rounded-lg px-6 py-5 shadow-lg">widget 5</div>
-                    </div>
-                    <div className="hidden lg:block"></div>
-                    <div className="lg:col-span-2">
-                        <div className="text-lg text-gray-02 mb-2">Title6</div>
-                        <div className="bg-white rounded-lg px-6 py-5 shadow-lg">widget 6</div>
-                    </div>
-                </main>
+                    {children}
                 {/* Content end */}
             </div>
         </div>
